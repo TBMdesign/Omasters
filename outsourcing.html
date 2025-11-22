@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outsourcing | Omasters Accountants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* UNIVERSAL */
+        :root {
+            --primary-blue: #0A5267;
+            --turquoise: #1FA8A8;
+            --light-grey: #f6f8f9;
+            --soft-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            --gold-accent: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            transition: all 0.3s ease;
+        }
+
+        .logo a {
+            display: block;
+        }
+
+        .logo a::after {
+            display: none;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            position: relative;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--turquoise), var(--primary-blue));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--turquoise);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 8% 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 82, 103, 0.92), rgba(31, 168, 168, 0.88));
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-accent), white);
+            margin-top: 20px;
+            border-radius: 3px;
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; opacity: 0; }
+            to { width: 120px; opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 60px;
+            text-align: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-text strong {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+        }
+
+        /* Regional Services */
+        .regional-services {
+            margin-top: 80px;
+        }
+
+        .region-section {
+            margin-bottom: 80px;
+        }
+
+        .region-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+
+        .region-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--gold-accent));
+            border-radius: 2px;
+        }
+
+        .services-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .services-row.single-service {
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-category {
+            background: var(--light-grey);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .service-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(10, 82, 103, 0.15);
+            background: white;
+        }
+
+        .service-category h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .service-list li:hover {
+            color: var(--primary-blue);
+            padding-left: 40px;
+        }
+
+        /* Diaspora Section */
+        .diaspora-section {
+            background: linear-gradient(135deg, var(--light-grey), white);
+            padding: 80px 8%;
+            margin-top: 80px;
+            border-radius: 20px;
+        }
+
+        .diaspora-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .diaspora-section h2 {
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .diaspora-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--gold-accent));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .diaspora-intro {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .diaspora-intro strong {
+            color: var(--primary-blue);
+        }
+
+        .diaspora-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .diaspora-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .diaspora-text p {
+            margin-bottom: 25px;
+        }
+
+        .diaspora-features {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+        }
+
+        .diaspora-features h3 {
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .feature-item:hover {
+            color: var(--primary-blue);
+            padding-left: 40px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: white;
+            padding: 100px 8%;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--turquoise));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(10, 82, 103, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 82, 103, 0.4);
+        }
+
+  /* FOOTER */
+        #contact-footer {
+            padding: 100px 8%;
+            background: linear-gradient(135deg, var(--primary-blue), #084556);
+            color: white;
+            text-align: center;
+            margin: 80px 0 0 0;
+            width: 100%;
+        }
+
+        #contact-footer h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+        }
+
+        #contact-footer p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            opacity: 0.95;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .diaspora-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: 100px 6% 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-section {
+                padding: 60px 6%;
+            }
+
+            .service-category {
+                padding: 30px;
+            }
+
+            .diaspora-section {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="omasters logo.png" alt="Omasters Accountants Logo">
+                </a>
+            </div>
+         <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="consulting.html">Consulting</a></li>
+                <li><a href="it solutions.html">I.T Solutions</a></li>
+                <li><a href="consulting.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img class="hero-background" src="Outsourcing.webp" alt="Outsourcing Partnership">
+        <div class="hero-content">
+            <h1>Outsourcing</h1>
+            <p>World-class services at exceptional value through our state-of-the-art virtual office centre</p>
+        </div>
+    </section>
+
+    <section class="content-section fade-in">
+        <div class="intro-text">
+            <strong>Why pay more for the same quality services when you can access premium solutions at just 10% of the cost?</strong> Through our state-of-the-art virtual office centre in Zimbabwe, we deliver a comprehensive range of outsourcing services to our valued clients in the United Kingdom and Australia, combining international standards with exceptional cost efficiency.
+        </div>
+
+        <div class="regional-services">
+            <!-- Australia Services -->
+            <div class="region-section fade-in">
+                <h2>🇦🇺 Australia Services</h2>
+                
+                <div class="services-row">
+                    <div class="service-category">
+                        <h3>Accounting Services</h3>
+                        <ul class="service-list">
+                            <li>Data entry & bookkeeping</li>
+                            <li>Financial statements & reports</li>
+                            <li>Management reports</li>
+                            <li>Budgeting & forecasting</li>
+                            <li>All reconciliations</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-category">
+                        <h3>Taxation Services</h3>
+                        <ul class="service-list">
+                            <li>Preparation & lodgement of GST/BAS returns</li>
+                            <li>Preparation & lodgement of income tax returns</li>
+                            <li>Capital gains tax & fringe benefit tax</li>
+                            <li>Tax planning & advice</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-category">
+                        <h3>Payroll Services</h3>
+                        <ul class="service-list">
+                            <li>Setting up payroll systems</li>
+                            <li>Processing payroll through software</li>
+                            <li>Superannuation & payroll tax lodgements</li>
+                            <li>Superannuation compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UK Services -->
+            <div class="region-section fade-in">
+                <h2>🇬🇧 United Kingdom Services</h2>
+                
+                <div class="services-row single-service">
+                    <div class="service-category">
+                        <h3>Accounting Services</h3>
+                        <ul class="service-list">
+                            <li>Data entry & bookkeeping</li>
+                            <li>Financial statements & reports</li>
+                            <li>Management reports</li>
+                            <li>Budgeting & forecasting</li>
+                            <li>All reconciliations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="diaspora-section fade-in">
+        <div class="diaspora-container">
+            <h2>Diaspora Entrepreneur Solutions</h2>
+            
+            <div class="diaspora-intro">
+                <strong>More than 2 million Zimbabweans call the diaspora home, with nearly 90% maintaining strong connections to their families, friends, and businesses back in Zimbabwe.</strong> We understand these unique ties and have crafted specialized solutions to bridge the distance.
+            </div>
+
+            <div class="diaspora-content">
+                <div class="diaspora-text">
+                    <p>
+                        Omasters Accountants has leveraged its extensive expertise and experience to develop a comprehensive package specifically tailored for diaspora entrepreneurs who want real-time visibility into their Zimbabwe-based business performance.
+                    </p>
+                    <p>
+                        Our cloud accounting solutions empower you to monitor your business performance anytime, anywhere in the world. We ensure real-time processing of all paperwork and conduct daily, weekly, monthly, or yearly audits of your business operations, giving you complete peace of mind.
+                    </p>
+                    <p>
+                        As Zimbabwe modernizes its statutory compliance requirements, navigating these changes from abroad can be challenging. Omasters Accountants assists diaspora entrepreneurs with tax compliance, payroll management, business registrations, and annual reviews, ensuring you remain fully compliant.
+                    </p>
+                </div>
+
+                <div class="diaspora-features">
+                    <h3>Specialized Services</h3>
+                    <div class="feature-item">Cloud accounting access for real-time business monitoring</div>
+                    <div class="feature-item">Daily, weekly, monthly, or annual business audits</div>
+                    <div class="feature-item">Complete tax compliance management</div>
+                    <div class="feature-item">Payroll processing and administration</div>
+                    <div class="feature-item">Business registration and annual reviews</div>
+                    <div class="feature-item">Daily cash collection and banking services</div>
+                    <div class="feature-item">Cash handling oversight and controls</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(31, 168, 168, 0.1); border-radius: 15px; border-left: 4px solid var(--turquoise);">
+                <p style="font-size: 1.15rem; line-height: 1.8; color: #555;">
+                    <strong style="color: var(--primary-blue);">Cash handling is a critical business area, especially when family members are involved.</strong> Omasters Accountants provides comprehensive daily cash collection and banking services, along with robust oversight controls to protect your business interests and maintain financial integrity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Optimize Your Business?</h2>
+        <p>Contact us today and discover how our outsourcing solutions can transform your business.</p>
+        <a href="contact.html" class="cta-button">Get in Touch</a>
+    </section>
+
+     <section id="contact-footer">
+        <h2>Contact Us</h2>
+        <p>Email: enquiries@omasters.co.zw</p>
+        <p>Phone: +263 242 708 006</p>
+    </section>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
+            } else {
+                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

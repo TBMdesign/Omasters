@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance & Accounting | Omasters Accountants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* UNIVERSAL */
+        :root {
+            --primary-blue: #0A5267;
+            --turquoise: #1FA8A8;
+            --light-grey: #f6f8f9;
+            --soft-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            --gold-accent: #d4af37;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Inter", sans-serif;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+        }
+        /* NAVIGATION */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .logo {
+            transition: all 0.3s ease;
+        }
+        .logo img {
+            height: 80px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        nav a {
+            position: relative;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--turquoise), var(--primary-blue));
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        nav a:hover {
+            color: var(--turquoise);
+        }
+
+    
+        .logo a::after {
+        content: none !important;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 8% 100px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 82, 103, 0.92), rgba(31, 168, 168, 0.88));
+            z-index: 1;
+        }
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+        .hero h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-accent), white);
+            margin-top: 20px;
+            border-radius: 3px;
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+        @keyframes slideIn {
+            from { width: 0; opacity: 0; }
+            to { width: 120px; opacity: 1; }
+        }
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 60px;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .service-category {
+            background: var(--light-grey);
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.4s ease;
+            animation: fadeIn 0.8s ease-out;
+            animation-fill-mode: both;
+            height: 100%;
+        }
+        .service-category:nth-child(1) { animation-delay: 0.1s; }
+        .service-category:nth-child(2) { animation-delay: 0.2s; }
+        .service-category:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .service-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(10, 82, 103, 0.15);
+            background: white;
+        }
+        .service-category h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .service-category h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--gold-accent));
+            border-radius: 2px;
+        }
+        .service-category ul {
+            list-style: none;
+        }
+        .service-category li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .service-category li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .service-category li:hover {
+            color: var(--primary-blue);
+            padding-left: 35px;
+        }
+        /* CTA SECTION */
+        .cta-section {
+            background: white;
+            padding: 100px 8%;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #555;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--turquoise));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(10, 82, 103, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 82, 103, 0.4);
+        }
+         /* FOOTER */
+        #contact-footer {
+            padding: 100px 8%;
+            background: linear-gradient(135deg, var(--primary-blue), #084556);
+            color: white;
+            text-align: center;
+            margin: 80px 0 0 0;
+            width: 100%;
+        }
+        #contact-footer h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+        }
+        #contact-footer p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            opacity: 0.95;
+        }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+            .hero {
+                min-height: 60vh;
+                padding: 100px 6% 80px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .content-section {
+                padding: 60px 6%;
+            }
+            .service-category {
+                padding: 35px;
+            }
+            .services-container {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                <img src="omasters logo.png" alt="Omasters Accountants Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="it solutions.html">I.T Solutions</a></li>
+                <li><a href="outsourcing.html">Outsourcing</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <img class="hero-background" src="consulting.webp" alt="Business Consulting">
+        <div class="hero-content">
+            <h1>Business Consulting</h1>
+            <p>Perspective that improves  performance, operations, and efficiency.</p>
+        </div>
+    </section>
+    <section class="content-section">
+        <div class="intro-text">
+            Whether you're a fresh start-up taking your first steps or an established business planning your next expansion, Omasters delivers well-researched, proven business advice you can trust. We partner with you to navigate every stage of your journey with confidence and clarity.
+        </div>
+        <div class="services-container">
+            <div class="service-category">
+                <h2>Existing Businesses</h2>
+                <ul>
+                    <li>Business transformation & restructuring</li>
+                    <li>Customer & operations design, management & advisory</li>
+                    <li>Technology advisory & risk management</li>
+                    <li>Financial management</li>
+                    <li>Deal advisory services</li>
+                    <li>Assistance with meetings of directors and shareholders</li>
+                </ul>
+            </div>
+            <div class="service-category">
+                <h2>New Businesses</h2>
+                <ul>
+                    <li>Company, trust, partnership, and NGO registration</li>
+                    <li>Business plans & proposals</li>
+                    <li>Marketing strategies</li>
+                    <li>Business name registration</li>
+                    <li>Maintenance of company statutory records</li>
+                    <li>Assistance with meetings of directors and shareholders</li>
+                </ul>
+            </div>
+            <div class="service-category">
+                <h2>Corporate Secretarial</h2>
+                <ul>
+                    <li>Board advisory services</li>
+                    <li>Lodgement of statutory documents</li>
+                    <li>Act as registered office</li>
+                    <li>Maintenance of company statutory records</li>
+                    <li>Assistance with meetings of directors and shareholders</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss how our finance and accounting services can help you achieve your goals.</p>
+        <a href="contact.html" class="cta-button">Get in Touch</a>
+    </section>
+     <section id="contact-footer">
+        <h2>Contact Us</h2>
+        <p>Email: enquiries@omasters.co.zw</p>
+        <p>Phone: +263 242 708 006</p>
+    </section>
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
+            } else {
+                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

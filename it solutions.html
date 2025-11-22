@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I.T Solutions | Omasters Accountants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* UNIVERSAL */
+        :root {
+            --primary-blue: #0A5267;
+            --turquoise: #1FA8A8;
+            --light-grey: #f6f8f9;
+            --soft-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            --gold-accent: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            transition: all 0.3s ease;
+        }
+
+        .logo a {
+            display: block;
+        }
+
+        .logo a::after {
+            display: none;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            position: relative;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--turquoise), var(--primary-blue));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--turquoise);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 8% 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 82, 103, 0.92), rgba(31, 168, 168, 0.88));
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-accent), white);
+            margin-top: 20px;
+            border-radius: 3px;
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; opacity: 0; }
+            to { width: 120px; opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 1000px;
+        }
+
+        .intro-text strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight-box {
+            background: var(--light-grey);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0 60px;
+            border-left: 5px solid var(--turquoise);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .highlight-box p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Services Section */
+        .services-section {
+            margin-top: 80px;
+        }
+
+        .services-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .services-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--gold-accent));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .services-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #666;
+            padding: 18px 0;
+            padding-left: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(10, 82, 103, 0.1);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .service-item:hover {
+            color: var(--primary-blue);
+            padding-left: 45px;
+        }
+
+        .service-item strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: var(--light-grey);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--primary-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(10, 82, 103, 0.15);
+            background: white;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: white;
+            padding: 100px 8%;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--turquoise));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(10, 82, 103, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 82, 103, 0.4);
+        }
+
+        /* FOOTER - FIXED TO REACH EDGES AND BOTTOM */
+        #contact-footer {
+            padding: 100px 8%;
+            background: linear-gradient(135deg, var(--primary-blue), #084556);
+            color: white;
+            text-align: center;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+        }        
+        
+        #contact-footer h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+        }
+
+        #contact-footer p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            opacity: 0.95;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: 100px 6% 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-section {
+                padding: 60px 6%;
+            }
+
+            .highlight-box {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Omasters Logo.png" alt="Omasters Accountants Logo">
+                </a>
+            </div>
+           <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="consulting.html">Consulting</a></li>
+                <li><a href="outsourcing.html">Outsourcing</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img class="hero-background" src="IT.jpg" alt="IT Solutions">
+        <div class="hero-content">
+            <h1>I.T Solutions</h1>
+            <p>Innovative technology solutions that drive efficiency, security, and digital transformation</p>
+        </div>
+    </section>
+
+    <section class="content-section fade-in">
+        <div class="intro-text">
+            <strong>In today's competitive landscape, businesses need professional IT service providers to deliver superior solutions at optimal costs.</strong> Our cloud-based accounting software provides your business with fast, secure, and reliable accounting services that streamline operations and enhance productivity.
+        </div>
+
+        <div class="highlight-box">
+            <p>
+                Our technology consulting experts invest time to thoroughly study and understand how your business operates, offering software solutions that perfectly align with your unique needs and budget constraints.
+            </p>
+            <p>
+                <strong>Technological innovation is reshaping how organizations operate</strong>, and implementing the right solutions can provide a sustainable competitive advantage. We partner with organizations to deliver safe, effective IT solutions that drive measurable results and long-term success.
+            </p>
+        </div>
+
+        <div class="services-section">
+            <h2>Our IT Services</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <strong>Technology Advisory</strong> – Comprehensive strategy and performance consulting to align your technology infrastructure with business objectives, ensuring optimal return on investment and competitive positioning.
+                </div>
+
+                <div class="service-item">
+                    <strong>Cloud Accounting Solutions</strong> – Cutting-edge cloud-based platforms that provide real-time financial visibility, seamless collaboration, and secure data access from anywhere, transforming how you manage your finances.
+                </div>
+
+                <div class="service-item">
+                    <strong>Computer Hardware & Software</strong> – Expert guidance on hardware procurement and software implementation, ensuring your technology stack is robust, scalable, and tailored to your operational requirements.
+                </div>
+
+                <div class="service-item">
+                    <strong>System Integration & Migration</strong> – Smooth transition and integration services that minimize disruption while maximizing the benefits of new technology platforms and updated systems.
+                </div>
+
+                <div class="service-item">
+                    <strong>Cybersecurity & Data Protection</strong> – Comprehensive security solutions to safeguard your critical business data, ensure compliance, and protect against evolving cyber threats.
+                </div>
+
+                <div class="service-item">
+                    <strong>IT Infrastructure Management</strong> – Ongoing support and maintenance to keep your technology infrastructure running smoothly, with proactive monitoring and rapid issue resolution.
+                </div>
+
+                <div class="service-item">
+                    <strong>Digital Transformation Consulting</strong> – Strategic guidance to navigate digital transformation initiatives, helping you leverage emerging technologies to optimize processes and enhance customer experiences.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Modernize Your Business?</h2>
+        <p>Let's explore how our IT solutions can transform your business operations and drive growth.</p>
+        <a href="contact.html" class="cta-button">Get in Touch</a>
+    </section>
+
+    <section id="contact-footer">
+        <h2>Contact Us</h2>
+        <p>Email: enquiries@omasters.co.zw</p>
+        <p>Phone: +263 242 708 006</p>
+    </section>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
+            } else {
+                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
